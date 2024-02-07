@@ -1,4 +1,4 @@
-// J'ai retiré le ; avec le num * num ce qui fait de cette expression une instruction et non une expression retournant une valeur. 
+// J'ai retiré le ; à la fin du num * num ce qui fait de cette expression une instruction et non une expression retournant une valeur. 
 
 fn main() {
     let answer = square(3);
