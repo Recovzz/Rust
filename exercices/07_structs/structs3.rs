@@ -22,12 +22,12 @@ impl Package {
     }
 
     // La méthode `is_international` vérifie si l'envoi est international.
-    fn is_international(&self) -> bool {
+    fn is_international(&self) -> bool { // J'ai modifié ??? à bool pour savoir si le colis est international ou non.
         self.sender_country != self.recipient_country
     }
 
     // La méthode `get_fees` calcule les frais de transport en fonction du poids du colis.
-    fn get_fees(&self, cents_per_gram: u32) -> u32 {
+    fn get_fees(&self, cents_per_gram: u32) -> u32 { // J'ai modifié le type de retour de ??? à u32 pour renvoyer le montant des frais de transport calculés en fonction du poids du colis.
         self.weight_in_grams * cents_per_gram
     }
 }
