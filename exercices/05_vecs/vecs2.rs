@@ -1,3 +1,13 @@
+// vec_loop :
+// La fonction vec_loop prend un vecteur v en tant que paramètre, itère sur chaque élément de manière mutable à l'aide de iter_mut(), et multiplie chaque élément par 2 en utilisant l'opérateur *.
+// Aucune nouvelle allocation n'est effectuée car la modification est faite directement sur le vecteur d'origine. Le vecteur modifié est renvoyé à la fin de la fonction.
+
+// vec_map :
+// La fonction vec_map prend une référence à un vecteur v en tant que paramètre, itère sur chaque élément à l'aide de iter(), multiplie chaque élément par 2 en utilisant une fonction de clôture dans map, 
+// et collecte les résultats dans un nouveau vecteur à l'aide de collect().
+// Contrairement à vec_loop, cette approche crée un nouveau vecteur pour stocker les résultats des opérations de multiplication. 
+// Cela permet de ne pas modifier le vecteur d'origine, ce qui peut être utile dans certains cas.
+
 // Cette fonction prend un vecteur d'entiers `v`, itère sur chaque élément de manière mutable, et multiplie chaque élément par 2.
 fn vec_loop(mut v: Vec<i32>) -> Vec<i32> {
     for element in v.iter_mut() {
