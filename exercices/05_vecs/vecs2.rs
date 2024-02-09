@@ -1,31 +1,14 @@
-// vecs2.rs
-//
-// A Vec of even numbers is given. Your task is to complete the loop so that
-// each number in the Vec is multiplied by 2.
-//
-// Make me pass the test!
-//
-// Execute `rustlings hint vecs2` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
-
+// Cette fonction prend un vecteur d'entiers `v`, itère sur chaque élément de manière mutable, et multiplie chaque élément par 2.
 fn vec_loop(mut v: Vec<i32>) -> Vec<i32> {
     for element in v.iter_mut() {
-        // TODO: Fill this up so that each element in the Vec `v` is
-        // multiplied by 2.
-        ???
+        *element *= 2; // Multiplie chaque élément par 2
     }
-
-    // At this point, `v` should be equal to [4, 8, 12, 16, 20].
-    v
+    v 
 }
 
+// Cette fonction prend une référence à un vecteur d'entiers `v`, itère sur chaque élément, multiplie chaque élément par 2, et collecte les résultats dans un nouveau vecteur.
 fn vec_map(v: &Vec<i32>) -> Vec<i32> {
-    v.iter().map(|element| {
-        // TODO: Do the same thing as above - but instead of mutating the
-        // Vec, you can just return the new number!
-        ???
-    }).collect()
+    v.iter().map(|element| *element * 2).collect() // Multiplie chaque élément par 2 et collecte dans un nouveau Vec
 }
 
 #[cfg(test)]
@@ -34,17 +17,23 @@ mod tests {
 
     #[test]
     fn test_vec_loop() {
+        // Crée un vecteur `v` contenant les 5 premiers nombres pairs (2, 4, 6, 8, 10)
         let v: Vec<i32> = (1..).filter(|x| x % 2 == 0).take(5).collect();
+        // Appelle vec_loop pour multiplier chaque élément par 2
         let ans = vec_loop(v.clone());
 
+        // Vérifie si le vecteur résultant `ans` est égal au vecteur attendu (4, 8, 12, 16, 20)
         assert_eq!(ans, v.iter().map(|x| x * 2).collect::<Vec<i32>>());
     }
 
     #[test]
     fn test_vec_map() {
+        // Crée un vecteur `v` contenant les 5 premiers nombres pairs (2, 4, 6, 8, 10)
         let v: Vec<i32> = (1..).filter(|x| x % 2 == 0).take(5).collect();
+        // Appelle vec_map pour multiplier chaque élément par 2
         let ans = vec_map(&v);
 
+        // Vérifie si le vecteur résultant `ans` est égal au vecteur attendu (4, 8, 12, 16, 20)
         assert_eq!(ans, v.iter().map(|x| x * 2).collect::<Vec<i32>>());
     }
 }
