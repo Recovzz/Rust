@@ -2,7 +2,7 @@
 
 Ne Pas faire les modules 20 21 22 (mais faire le 23)
 
-Le rendu: 
+Le rendu : 
 
 Soit rendre tout le dossier avec exercices fonctionnels par zip si vous ne maitrisez pas git, sinon fork et m envoyer le lien de votre fork me va aussi. 
 
