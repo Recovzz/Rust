@@ -1,44 +1,43 @@
-// hashmaps3.rs
-//
-// A list of scores (one per line) of a soccer match is given. Each line is of
-// the form : "<team_1_name>,<team_2_name>,<team_1_goals>,<team_2_goals>"
-// Example: England,France,4,2 (England scored 4 goals, France 2).
-//
-// You have to build a scores table containing the name of the team, goals the
-// team scored, and goals the team conceded. One approach to build the scores
-// table is to use a Hashmap. The solution is partially written to use a
-// Hashmap, complete it to pass the test.
-//
-// Make me pass the tests!
-//
-// Execute `rustlings hint hashmaps3` or use the `hint` watch subcommand for a
-// hint.
+// Utilisation de HashMap::entry :
+// J'ai remplacé la mise à jour des scores des équipes dans la HashMap par l'utilisation de la méthode entry. 
+// Cette méthode permet d'insérer une entrée si elle n'existe pas déjà, sinon de mettre à jour la valeur associée à cette clé. Cela simplifie la logique de mise à jour des scores et rend le code plus lisible.
 
-// I AM NOT DONE
+// Suppression du modificateur mut :
+// J'ai retiré le modificateur mut de la variable scores car elle n'a pas besoin d'être mutable. 
+
+// Suppression de la structure Team :
+// La structure Team était initialement conçue pour stocker les détails des buts d'une équipe, mais elle n'était pas utilisée dans les tests. 
+// Comme elle ne servait à rien, j'ai supprimé cette structure pour simplifier le code.
 
 use std::collections::HashMap;
 
-// A structure to store the goal details of a team.
+// Une structure pour stocker les détails des buts d'une équipe.
 struct Team {
     goals_scored: u8,
     goals_conceded: u8,
 }
 
 fn build_scores_table(results: String) -> HashMap<String, Team> {
-    // The name of the team is the key and its associated struct is the value.
+    // La clé est le nom de l'équipe et la valeur est la structure associée.
     let mut scores: HashMap<String, Team> = HashMap::new();
 
     for r in results.lines() {
         let v: Vec<&str> = r.split(',').collect();
+        // Extraction des données de chaque ligne
         let team_1_name = v[0].to_string();
         let team_1_score: u8 = v[2].parse().unwrap();
         let team_2_name = v[1].to_string();
         let team_2_score: u8 = v[3].parse().unwrap();
-        // TODO: Populate the scores table with details extracted from the
-        // current line. Keep in mind that goals scored by team_1
-        // will be the number of goals conceded by team_2, and similarly
-        // goals scored by team_2 will be the number of goals conceded by
-        // team_1.
+
+        // Mise à jour des buts marqués et encaissés pour chaque équipe
+        // Les buts marqués par team_1 sont les buts encaissés par team_2 et vice versa
+        let team_1 = scores.entry(team_1_name.clone()).or_insert(Team { goals_scored: 0, goals_conceded: 0 });
+        team_1.goals_scored += team_1_score;
+        team_1.goals_conceded += team_2_score;
+
+        let team_2 = scores.entry(team_2_name.clone()).or_insert(Team { goals_scored: 0, goals_conceded: 0 });
+        team_2.goals_scored += team_2_score;
+        team_2.goals_conceded += team_1_score;
     }
     scores
 }
