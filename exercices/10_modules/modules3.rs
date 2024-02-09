@@ -1,5 +1,4 @@
-// 
-use std::time::{SystemTime, UNIX_EPOCH}; // Importation des éléments nécessaires
+use std::time::{SystemTime, UNIX_EPOCH}; // Importation des éléments nécessaires pour obtenir le temps ainsi que la date
 
 fn main() {
     match SystemTime::now().duration_since(UNIX_EPOCH) {
