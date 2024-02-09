@@ -1,3 +1,7 @@
+// Les instances de Planet pour Saturne et Uranus ont été ajoutées, en utilisant Rc::clone(&sun) pour partager une référence à l'instance de Sun existante.
+// Une instance de Planet pour Neptune a été ajoutée, en utilisant Rc::clone(&sun) pour partager une référence à l'instance de Sun existante.
+// Les instructions drop() ont été ajoutées pour chaque instance de Planet, pour démontrer la gestion de la mémoire et la réduction du nombre de références à l'instance de Sun.
+
 use std::rc::Rc;
 
 #[derive(Debug)]
