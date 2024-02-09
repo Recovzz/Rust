@@ -1,3 +1,10 @@
+// Package struct :
+// La structure Package contient des champs de données tels que sender_country, recipient_country et weight_in_grams, qui représentent respectivement le pays expéditeur, le pays destinataire et le poids en grammes du colis.
+// La méthode new a été modifiée pour inclure une vérification du poids du colis. Si le poids est inférieur à 10 grammes, 
+// elle panique avec un message d'erreur indiquant qu'un colis ne peut pas être expédié avec un poids inférieur à 10 grammes.
+// La méthode is_international a été modifiée pour renvoyer un booléen indiquant si le colis est international ou non. Cela est déterminé en comparant le pays expéditeur avec le pays destinataire.
+// La méthode get_fees a été modifiée pour renvoyer un montant en cents représentant les frais de transport calculés en fonction du poids du colis et du coût par gramme spécifié.
+
 // La structure `Package` est définie avec des champs de données et des méthodes associées.
 #[derive(Debug)]
 struct Package {
