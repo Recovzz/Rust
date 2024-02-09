@@ -1,3 +1,15 @@
+// Message enum :
+// Une énumération Message pour représenter les différents types de messages que notre application peut recevoir.
+// Chaque variante de Message correspond à un type de message spécifique avec ses données associées. Les variantes sont les suivantes :
+// ChangeColor(u8, u8, u8): Pour changer la couleur, trois valeurs RGB sont passées en tant que données associées.
+// Echo(String): Pour l'écho, une chaîne de caractères est passée en tant que données associées.
+// Move(Point): Pour le mouvement, une structure Point est passée en tant que données associées.
+// Quit: Pour quitter l'application.
+
+// State struct :
+// Une structure State pour représenter l'état global de notre application.
+// Cette structure contient des champs tels que color, position, quit, et message, qui représentent respectivement la couleur actuelle, la position, le statut d'arrêt et le message actuel de l'application.
+
 // Nous définissons une énumération `Message` pour représenter les différents types de messages
 enum Message {
     // Chaque variante correspond à un type de message spécifique avec ses données associées
