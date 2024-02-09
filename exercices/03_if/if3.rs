@@ -1,4 +1,4 @@
-// 
+// J'ai remplacé 2.0 par 2 pour que l'animal "gopher" car identifier est déclarer comme étant un entier et "Unknown" par 0 car il est mieux d'utiliser un entier pour définir une valeur par défaut pour les animaux inconnus.
 
 pub fn animal_habitat(animal: &str) -> &'static str {
     let identifier = if animal == "crab" {
